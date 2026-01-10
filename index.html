@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoxara | Master the Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            border-radius: 24px;
+        }
+        .gradient-text { 
+            background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .ai-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div class="fixed inset-0 z-[-2] opacity-20" style="background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <header class="max-w-7xl mx-auto px-8 py-10 flex justify-center">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                <i data-lucide="bar-chart-3" class="text-white w-6 h-6"></i>
+            </div>
+            <span class="text-3xl font-extrabold tracking-tighter">STOXARA</span>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6">
+        <section class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Master the Market with <br><span class="gradient-text">Conversation.</span>
+            </h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                Ask Stoxara about any stock sentiment or technical indicator and get <span class="text-blue-400 font-semibold">institutional-grade answers</span> in seconds.
+            </p>
+        </section>
+
+        <section class="relative z-10 mb-24">
+            <div class="ai-glow"></div>
+            <div class="glass-panel p-2 min-h-[500px] shadow-2xl overflow-hidden">
+                <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
+            </div>
+        </section>
+
+        <section class="grid md:grid-cols-3 gap-8 pb-20">
+            <div class="space-y-3">
+                <div class="text-blue-500 bg-blue-500/10 w-10 h-10 rounded-lg flex items-center justify-center">
+                    <i data-lucide="brain" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl text-white">Advanced Sentiment</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Understand the market mood instantly. We analyze thousands of data points so you don't have to.</p>
+            </div>
+
+            <div class="space-y-3">
+                <div class="text-purple-500 bg-purple-500/10 w-10 h-10 rounded-lg flex items-center justify-center">
+                    <i data-lucide="gauge" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl text-white">Technical Indicators</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Get RSI, Moving Averages, and Volume profiles just by asking a simple question.</p>
+            </div>
+
+            <div class="space-y-3">
+                <div class="text-emerald-500 bg-emerald-500/10 w-10 h-10 rounded-lg flex items-center justify-center">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <h3 class="font-bold text-xl text-white">Institutional Grade</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">No fluff. Just raw, accurate data delivered through a sophisticated AI interface.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/5 py-12 text-center text-slate-600 text-sm italic">
+        Powered by Stoxara Intelligence &bull; 2026
+    </footer>
+
+    <script>
+        // Refresh icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
