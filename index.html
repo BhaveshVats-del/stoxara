@@ -8,12 +8,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
         .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
         .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hidden-content { display: none !important; }
-        input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none; transition: 0.3s; }
-        input:focus { border-color: #60A5FA !important; background: rgba(255, 255, 255, 0.1) !important; }
+        input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -21,8 +20,8 @@
     <div id="auth-overlay" class="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center px-6">
         
         <div id="login-box" class="glass-panel p-8 w-full max-w-md shadow-2xl">
-            <h2 class="text-3xl font-extrabold mb-2 text-center tracking-tight">Welcome back</h2>
-            <p class="text-slate-500 text-center text-sm mb-8">Enter your details to access the AI</p>
+            <h2 class="text-3xl font-extrabold mb-2 text-center tracking-tight text-white">Welcome back</h2>
+            <p class="text-slate-500 text-center text-sm mb-8">Enter your credentials to access the AI</p>
             
             <div id="login-error" class="hidden bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-xl text-xs mb-4 text-center"></div>
             
@@ -39,28 +38,20 @@
         </div>
 
         <div id="signup-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden">
-            <h2 class="text-3xl font-extrabold mb-2 text-center tracking-tight">Create Account</h2>
-            <p class="text-slate-500 text-center text-sm mb-8">Join Stoxara Intelligence</p>
-            
+            <h2 class="text-3xl font-extrabold mb-6 text-center tracking-tight">Create Account</h2>
             <div class="space-y-4">
                 <input type="email" id="s-email" placeholder="Email Address" class="w-full p-4 rounded-xl">
-                <input type="password" id="s-pass" placeholder="Create Password" class="w-full p-4 rounded-xl">
+                <input type="password" id="s-pass" placeholder="Password" class="w-full p-4 rounded-xl">
                 <button id="btn-signup" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-500 transition-all">Sign Up</button>
             </div>
             <p class="text-center text-sm mt-6 text-slate-500">Already a member? <span onclick="window.switchView('login')" class="text-blue-400 cursor-pointer font-bold">Log in</span></p>
         </div>
 
         <div id="verify-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden text-center">
-            <div class="w-20 h-20 bg-blue-500/10 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="mail-check" class="w-10 h-10"></i>
-            </div>
-            <h2 class="text-2xl font-bold mb-2">Verify your Gmail</h2>
-            <p class="text-slate-400 text-sm mb-8">We sent a link to your inbox. <br><b>Once you click it, this screen will unlock automatically.</b></p>
-            
-            <div class="flex items-center justify-center gap-3 text-blue-400 text-xs font-bold uppercase tracking-widest">
-                <div class="animate-spin h-5 w-5 border-2 border-blue-400 border-t-transparent rounded-full"></div>
-                Checking verification...
-            </div>
+            <i data-lucide="mail" class="w-12 h-12 text-blue-400 mx-auto mb-4"></i>
+            <h2 class="text-2xl font-bold mb-2 text-white">Verify your Gmail</h2>
+            <p class="text-slate-400 text-sm mb-8">We sent a link to your inbox. As soon as you click it, you will be redirected to the AI page.</p>
+            <div class="animate-pulse text-blue-400 text-xs font-bold">Waiting for verification link...</div>
         </div>
     </div>
 
@@ -73,7 +64,7 @@
         <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-10">
             <div id="chatbot-container" class="glass-panel p-2 h-[700px] shadow-2xl relative flex items-center justify-center">
                 <div id="loading-ai" class="text-slate-500 text-center">
-                    <p class="animate-pulse">Access Granted. Loading AI Analyst...</p>
+                    <p class="animate-pulse">Verification Successful. Loading AI...</p>
                 </div>
                 </div>
         </main>
@@ -81,7 +72,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, onAuthStateChanged, onIdTokenChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyB4pWQ0nCrXNUnXdOopWZ3hGZwlGs3qtFU",
@@ -95,14 +86,14 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        let pollingInterval = null;
+        let checkInterval = null;
 
         window.switchView = (view) => {
             document.querySelectorAll('#auth-overlay > div').forEach(div => div.classList.add('hidden'));
             document.getElementById(view + '-box').classList.remove('hidden');
         };
 
-        const startAI = () => {
+        const injectAI = () => {
             if (document.getElementById('ai-script')) return;
             const script = document.createElement('script');
             script.id = 'ai-script';
@@ -111,37 +102,38 @@
             document.getElementById('chatbot-container').appendChild(script);
         };
 
-        // THE MASTER ALGORITHM
-        const syncAndUnlock = async () => {
+        // THE CORE FIX: This function checks if the user is verified RIGHT NOW
+        const checkVerification = async () => {
             const user = auth.currentUser;
             if (user) {
-                await user.reload(); // Force check the actual server status
+                await user.reload(); // Fetch fresh data from Google
                 if (user.emailVerified) {
-                    clearInterval(pollingInterval);
+                    clearInterval(checkInterval);
                     document.getElementById('auth-overlay').classList.add('hidden');
                     document.getElementById('main-content').classList.remove('hidden-content');
-                    startAI();
+                    injectAI();
                 } else {
                     window.switchView('verify');
+                    if (!checkInterval) checkInterval = setInterval(checkVerification, 3000);
                 }
             }
         };
 
-        // LOGIN CLICK
+        // LOGIN BUTTON
         document.getElementById('btn-login').addEventListener('click', async () => {
             const email = document.getElementById('l-email').value;
             const pass = document.getElementById('l-pass').value;
             const errorMsg = document.getElementById('login-error');
             try {
                 await signInWithEmailAndPassword(auth, email, pass);
-                syncAndUnlock();
+                checkVerification(); // Check status immediately
             } catch (err) {
                 errorMsg.innerText = "Gmail ID not found or account not made.";
                 errorMsg.classList.remove('hidden');
             }
         });
 
-        // SIGNUP CLICK
+        // SIGNUP BUTTON
         document.getElementById('btn-signup').addEventListener('click', async () => {
             const email = document.getElementById('s-email').value;
             const pass = document.getElementById('s-pass').value;
@@ -149,8 +141,7 @@
                 const cred = await createUserWithEmailAndPassword(auth, email, pass);
                 await sendEmailVerification(cred.user);
                 window.switchView('verify');
-                // Start the background checker (like ChatGPT)
-                pollingInterval = setInterval(syncAndUnlock, 3000);
+                checkInterval = setInterval(checkVerification, 3000);
             } catch (err) { alert(err.message); }
         });
 
@@ -158,9 +149,14 @@
             signOut(auth).then(() => location.reload());
         });
 
-        // Listen for token updates (happens when they click the Gmail link)
-        onIdTokenChanged(auth, (user) => {
-            if (user) syncAndUnlock();
+        // AUTO-DETECT ON LOAD
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                checkVerification();
+            } else {
+                document.getElementById('auth-overlay').classList.remove('hidden');
+                document.getElementById('main-content').classList.add('hidden-content');
+            }
         });
 
         lucide.createIcons();
