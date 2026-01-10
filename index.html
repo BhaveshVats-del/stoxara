@@ -8,155 +8,125 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; }
-        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
-        .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hidden-content { display: none !important; }
-        input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none; }
+        :root { --primary: #3B82F6; --accent: #8B5CF6; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #020617; 
+            color: #f8fafc; 
+            margin: 0; 
+            overflow-x: hidden;
+        }
+
+        /* Cinematic Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .floating-icon {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-inner-container {
+            background: #0f172a;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col">
 
-    <div id="auth-overlay" class="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center px-6">
-        
-        <div id="login-box" class="glass-panel p-8 w-full max-w-md shadow-2xl">
-            <h2 class="text-3xl font-extrabold mb-2 text-center tracking-tight">Welcome back</h2>
-            <p class="text-slate-500 text-center text-sm mb-8">Enter your credentials to access the AI</p>
-            <div id="login-error" class="hidden bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-xl text-xs mb-4 text-center"></div>
-            <div class="space-y-4">
-                <input type="email" id="l-email" placeholder="Gmail ID" class="w-full p-4 rounded-xl">
-                <input type="password" id="l-pass" placeholder="Password" class="w-full p-4 rounded-xl">
-                <button id="btn-login" class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-slate-200 transition-all">Log in</button>
+    <div class="bg-mesh"></div>
+
+    <div class="floating-icon top-[15%] left-[10%]" style="animation-delay: 0s;">
+        <i data-lucide="bitcoin" class="w-16 h-16 text-yellow-500"></i>
+    </div>
+    <div class="floating-icon top-[60%] right-[10%]" style="animation-delay: 2s;">
+        <i data-lucide="ethereum" class="w-20 h-20 text-blue-400"></i>
+    </div>
+    <div class="floating-icon bottom-[10%] left-[20%]" style="animation-delay: 4s;">
+        <i data-lucide="bar-chart-3" class="w-12 h-12 text-emerald-400"></i>
+    </div>
+
+    <header class="max-w-7xl mx-auto w-full px-8 py-8 flex justify-between items-center z-10">
+        <div class="flex items-center gap-3">
+            <div class="p-2.5 bg-blue-600 rounded-2xl shadow-xl shadow-blue-500/30">
+                <i data-lucide="zap" class="text-white w-6 h-6"></i>
             </div>
-            <p class="text-center text-sm mt-6 text-slate-500">
-                Don't have an account? 
-                <span onclick="window.switchView('signup')" class="text-blue-400 cursor-pointer font-bold underline">Make an account right now</span>
+            <span class="text-3xl font-black tracking-tighter uppercase">Stoxara</span>
+        </div>
+        <div class="hidden md:flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2 rounded-2xl">
+            <div class="h-2 w-2 bg-emerald-500 rounded-full animate-pulse"></div>
+            <span class="text-xs font-bold tracking-widest text-slate-300 uppercase">System Status: Active</span>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center px-6 pb-12 z-10">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight">
+                Institutional <span class="gradient-text">Intelligence</span>
+            </h1>
+            <p class="text-slate-400 text-lg font-medium max-w-2xl mx-auto">
+                Real-time market analysis and predictive insights powered by the Stoxara AI engine.
             </p>
         </div>
 
-        <div id="signup-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden">
-            <h2 class="text-3xl font-extrabold mb-6 text-center tracking-tight">Create Account</h2>
-            <div class="space-y-4">
-                <input type="email" id="s-email" placeholder="Email Address" class="w-full p-4 rounded-xl">
-                <input type="password" id="s-pass" placeholder="Create Password" class="w-full p-4 rounded-xl">
-                <button id="btn-signup" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-500 transition-all">Sign Up</button>
-            </div>
-            <p class="text-center text-sm mt-6 text-slate-500">Already a member? <span onclick="window.switchView('login')" class="text-blue-400 cursor-pointer font-bold">Log in</span></p>
-        </div>
-
-        <div id="verify-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden text-center">
-            <div class="w-20 h-20 bg-blue-500/10 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="mail-check" class="w-10 h-10"></i>
-            </div>
-            <h2 class="text-2xl font-bold mb-2">Verify your Gmail</h2>
-            <p class="text-slate-400 text-sm mb-8">Click the link in your inbox. This page will automatically unlock once you are verified.</p>
-            <div class="animate-pulse text-blue-400 text-xs font-bold flex items-center justify-center gap-2">
-                <div class="h-2 w-2 bg-blue-400 rounded-full"></div> Syncing with Google...
+        <div class="w-full max-w-5xl glass-panel p-3">
+            <div class="ai-inner-container h-[700px] w-full overflow-hidden relative flex items-center justify-center">
+                
+                <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
+                
+                <div id="ai-loader" class="absolute flex flex-col items-center gap-4">
+                    <div class="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                    <span class="text-xs font-bold text-slate-500 tracking-widest">CONNECTING TO ENGINE...</span>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <div id="main-content" class="hidden-content min-h-screen flex flex-col">
-        <header class="max-w-7xl mx-auto w-full px-8 py-6 flex justify-between items-center border-b border-white/5">
-            <span class="text-2xl font-extrabold tracking-tighter gradient-text">STOXARA AI</span>
-            <button id="btn-logout" class="text-slate-400 text-sm hover:text-white font-bold">Log out</button>
-        </header>
+    <footer class="py-12 border-t border-white/5 text-center">
+        <p class="text-slate-600 text-[10px] font-bold tracking-[0.5em] uppercase">
+            &copy; 2026 Stoxara Proprietary Technology &bull; Confidential Investor Demo
+        </p>
+    </footer>
 
-        <main class="flex-grow max-w-5xl mx-auto w-full px-6 py-10">
-            <div id="ai-wrapper" class="glass-panel p-2 h-[750px] shadow-2xl flex items-center justify-center">
-                <div id="loading-spinner" class="text-slate-500 text-center">
-                    <p class="animate-bounce mb-2">🔒 Secure Access Granted</p>
-                    <p class="text-xs">Initializing AI Chartbot...</p>
-                </div>
-                </div>
-        </main>
-    </div>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyB4pWQ0nCrXNUnXdOopWZ3hGZwlGs3qtFU",
-            authDomain: "stoxara.firebaseapp.com",
-            projectId: "stoxara",
-            storageBucket: "stoxara.firebasestorage.app",
-            messagingSenderId: "103544167886",
-            appId: "1:103544167886:web:060a19111680dbd35f5f9f",
-            measurementId: "G-B6Z3PRFWP5"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        let statusInterval = null;
-
-        window.switchView = (view) => {
-            document.querySelectorAll('#auth-overlay > div').forEach(div => div.classList.add('hidden'));
-            document.getElementById(view + '-box').classList.remove('hidden');
-        };
-
-        // INJECTS YOUR SPECIFIC SCRIPT
-        const launchAI = () => {
-            if (document.getElementById('noupe-ai')) return;
-            const script = document.createElement('script');
-            script.id = 'noupe-ai';
-            script.src = 'https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js';
-            script.onload = () => document.getElementById('loading-spinner').style.display = 'none';
-            document.getElementById('ai-wrapper').appendChild(script);
-        };
-
-        const checkSecurityStatus = async () => {
-            const user = auth.currentUser;
-            if (user) {
-                await user.reload(); // Checks Google's server for the verified link
-                if (user.emailVerified) {
-                    clearInterval(statusInterval);
-                    document.getElementById('auth-overlay').classList.add('hidden');
-                    document.getElementById('main-content').classList.remove('hidden-content');
-                    launchAI();
-                } else {
-                    window.switchView('verify');
-                    if (!statusInterval) statusInterval = setInterval(checkSecurityStatus, 3000);
-                }
-            }
-        };
-
-        // LOGIN (For Pre-existing accounts)
-        document.getElementById('btn-login').addEventListener('click', async () => {
-            const email = document.getElementById('l-email').value;
-            const pass = document.getElementById('l-pass').value;
-            try {
-                await signInWithEmailAndPassword(auth, email, pass);
-                checkSecurityStatus(); // Goes straight to AI if already verified
-            } catch (err) {
-                const errBox = document.getElementById('login-error');
-                errBox.innerText = "Gmail ID not found or account not made.";
-                errBox.classList.remove('hidden');
-            }
-        });
-
-        // SIGNUP (For New accounts)
-        document.getElementById('btn-signup').addEventListener('click', async () => {
-            const email = document.getElementById('s-email').value;
-            const pass = document.getElementById('s-pass').value;
-            try {
-                const cred = await createUserWithEmailAndPassword(auth, email, pass);
-                await sendEmailVerification(cred.user);
-                window.switchView('verify');
-                statusInterval = setInterval(checkSecurityStatus, 3000); // Check for Gmail click
-            } catch (err) { alert(err.message); }
-        });
-
-        document.getElementById('btn-logout').addEventListener('click', () => {
-            signOut(auth).then(() => location.reload());
-        });
-
-        // AUTO-LOADER
-        onAuthStateChanged(auth, (user) => {
-            if (user) checkSecurityStatus();
-        });
-
+    <script>
         lucide.createIcons();
+        
+        // Hide loader after a short delay for smooth transition
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('ai-loader');
+                if(loader) loader.style.opacity = '0';
+            }, 3000);
+        });
     </script>
 </body>
 </html>
