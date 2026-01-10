@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoxara | AI Market Intelligence</title>
+    <title>Stoxara | AI Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
         .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
         .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hidden-content { display: none !important; }
         input { background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; outline: none; }
+        
+        /* Smooth transition like ChatGPT */
+        #main-content { transition: opacity 0.5s ease-in-out; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -20,60 +23,60 @@
     <div id="auth-overlay" class="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center px-6">
         
         <div id="login-box" class="glass-panel p-8 w-full max-w-md shadow-2xl">
-            <h2 class="text-3xl font-extrabold mb-6 text-center tracking-tight">Login</h2>
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold tracking-tight">Welcome back</h2>
+                <p class="text-slate-500 text-sm mt-2">Log in to your Stoxara account</p>
+            </div>
             <div id="login-error" class="hidden bg-red-500/10 border border-red-500/50 text-red-400 p-3 rounded-xl text-xs mb-4 text-center"></div>
             <div class="space-y-4">
-                <input type="email" id="l-email" placeholder="Email" class="w-full p-4 rounded-xl">
+                <input type="email" id="l-email" placeholder="Email address" class="w-full p-4 rounded-xl">
                 <input type="password" id="l-pass" placeholder="Password" class="w-full p-4 rounded-xl">
-                <button id="btn-login" class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-slate-200 transition-all">Continue</button>
+                <button id="btn-login" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-500 transition-all">Continue</button>
             </div>
-            <p class="text-center text-sm mt-6 text-slate-500">Need access? <span onclick="window.switchView('signup')" class="text-blue-400 cursor-pointer font-bold">Sign up</span></p>
+            <p class="text-center text-sm mt-6 text-slate-500">Don't have an account? <span onclick="window.switchView('signup')" class="text-blue-400 cursor-pointer font-bold">Sign up</span></p>
         </div>
 
         <div id="signup-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden">
-            <h2 class="text-3xl font-extrabold mb-6 text-center tracking-tight">Create Account</h2>
+            <h2 class="text-3xl font-extrabold mb-6 text-center tracking-tight">Create your account</h2>
             <div class="space-y-4">
-                <input type="email" id="s-email" placeholder="Email Address" class="w-full p-4 rounded-xl">
+                <input type="email" id="s-email" placeholder="Email address" class="w-full p-4 rounded-xl">
                 <input type="password" id="s-pass" placeholder="Password" class="w-full p-4 rounded-xl">
                 <button id="btn-signup" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-500 transition-all">Sign Up</button>
             </div>
-            <p class="text-center text-sm mt-6 text-slate-500">Member? <span onclick="window.switchView('login')" class="text-blue-400 cursor-pointer font-bold">Log in</span></p>
+            <p class="text-center text-sm mt-6 text-slate-500">Already have an account? <span onclick="window.switchView('login')" class="text-blue-400 cursor-pointer font-bold">Log in</span></p>
         </div>
 
         <div id="verify-box" class="glass-panel p-8 w-full max-w-md shadow-2xl hidden text-center">
             <div class="w-16 h-16 bg-blue-500/10 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i data-lucide="mail" class="w-8 h-8"></i>
+                <i data-lucide="mail-open" class="w-8 h-8"></i>
             </div>
             <h2 class="text-2xl font-bold mb-2">Check your email</h2>
-            <p class="text-slate-400 text-sm mb-8">We sent a link to your Gmail. Click it, then come back here.</p>
-            <div class="animate-pulse text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">Syncing with Google...</div>
-            <button onclick="window.syncStatus()" class="w-full bg-white/10 text-white py-3 rounded-xl text-sm font-bold">I've verified, let me in</button>
+            <p class="text-slate-400 text-sm mb-8">We've sent a verification link to your Gmail. <br><b>Click the link, and this page will update automatically.</b></p>
+            <div class="flex items-center justify-center gap-2 text-blue-400 text-xs font-bold uppercase tracking-widest">
+                <div class="animate-spin h-4 w-4 border-2 border-blue-400 border-t-transparent rounded-full"></div>
+                Waiting for verification...
+            </div>
         </div>
     </div>
 
     <div id="main-content" class="hidden-content min-h-screen flex flex-col">
-        <header class="max-w-7xl mx-auto w-full px-8 py-6 flex justify-between items-center border-b border-white/5">
-            <span class="text-2xl font-extrabold tracking-tighter gradient-text">STOXARA</span>
+        <header class="max-w-7xl mx-auto w-full px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <i data-lucide="zap" class="text-white w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tighter">STOXARA AI</span>
+            </div>
             <button id="btn-logout" class="text-slate-400 text-sm hover:text-white font-bold bg-white/5 px-4 py-2 rounded-lg">Log out</button>
         </header>
 
-        <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-10">
-            <div class="text-center mb-8">
-                <h1 class="text-4xl font-extrabold mb-2">Institutional <span class="gradient-text">AI Analyst</span></h1>
-                <p class="text-slate-500 text-sm">Ask about sentiment, RSI, or market trends below.</p>
-            </div>
-
-            <div id="chatbot-container" class="glass-panel p-2 h-[650px] shadow-2xl relative overflow-hidden flex items-center justify-center">
+        <main class="flex-grow max-w-5xl mx-auto w-full px-6 py-4">
+            <div id="chatbot-area" class="glass-panel p-2 h-[750px] shadow-2xl relative overflow-hidden flex items-center justify-center">
                 <div id="loading-ai" class="text-slate-500 flex flex-col items-center">
-                    <div class="animate-spin h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full mb-4"></div>
-                    <p>Waking up Stoxara AI...</p>
+                    <p class="animate-pulse">Loading Institutional Data...</p>
                 </div>
                 </div>
         </main>
-        
-        <footer class="py-6 text-center text-slate-700 text-xs uppercase tracking-widest font-bold">
-            Stoxara Secure Environment • 2026
-        </footer>
     </div>
 
     <script type="module">
@@ -92,50 +95,51 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        let pollTimer = null;
+        let verificationTimer = null;
 
         window.switchView = (view) => {
             document.querySelectorAll('#auth-overlay > div').forEach(div => div.classList.add('hidden'));
             document.getElementById(view + '-box').classList.remove('hidden');
         };
 
-        // INJECTS YOUR CHATBOT SCRIPT
-        const startAI = () => {
-            if (document.getElementById('noupe-bot')) return;
+        // This function wakes up the AI Page
+        const loadAIPage = () => {
+            if (document.getElementById('ai-script')) return;
             const script = document.createElement('script');
-            script.id = 'noupe-bot';
+            script.id = 'ai-script';
             script.src = 'https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js';
             script.onload = () => document.getElementById('loading-ai').style.display = 'none';
-            document.getElementById('chatbot-container').appendChild(script);
+            document.getElementById('chatbot-area').appendChild(script);
         };
 
-        // THE "ALGORITHM" THAT CHECKS GOOGLE'S SERVER
-        window.syncStatus = async () => {
+        // This function checks the "Truth" from the server
+        const checkStatus = async () => {
             const user = auth.currentUser;
             if (user) {
-                await user.reload(); // Refresh the data from Google
-                await user.getIdToken(true); // Force token update
-                
+                await user.reload(); // Ask Google if they clicked the link
                 if (user.emailVerified) {
-                    clearInterval(pollTimer);
-                    document.getElementById('auth-overlay').classList.add('hidden');
+                    clearInterval(verificationTimer);
+                    document.getElementById('auth-overlay').style.display = 'none';
                     document.getElementById('main-content').classList.remove('hidden-content');
-                    startAI();
-                } else {
-                    window.switchView('verify');
+                    loadAIPage();
                 }
             }
         };
 
+        // LOGIN
         document.getElementById('btn-login').addEventListener('click', async () => {
             const email = document.getElementById('l-email').value;
             const pass = document.getElementById('l-pass').value;
             try {
-                await signInWithEmailAndPassword(auth, email, pass);
-                await window.syncStatus();
-            } catch (err) { alert("Login failed. Check details or verify email."); }
+                const cred = await signInWithEmailAndPassword(auth, email, pass);
+                checkStatus(); // Immediate check
+            } catch (err) { 
+                document.getElementById('login-error').innerText = "Account not verified or invalid details.";
+                document.getElementById('login-error').classList.remove('hidden');
+            }
         });
 
+        // SIGNUP
         document.getElementById('btn-signup').addEventListener('click', async () => {
             const email = document.getElementById('s-email').value;
             const pass = document.getElementById('s-pass').value;
@@ -143,18 +147,20 @@
                 const cred = await createUserWithEmailAndPassword(auth, email, pass);
                 await sendEmailVerification(cred.user);
                 window.switchView('verify');
-                pollTimer = setInterval(window.syncStatus, 3000); // Check every 3s
+                verificationTimer = setInterval(checkStatus, 3000); // Poll every 3 seconds
             } catch (err) { alert(err.message); }
         });
 
+        // LOGOUT
         document.getElementById('btn-logout').addEventListener('click', () => {
             signOut(auth).then(() => location.reload());
         });
 
+        // ON PAGE LOAD
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                window.syncStatus();
-                if (!user.emailVerified) pollTimer = setInterval(window.syncStatus, 3000);
+                checkStatus();
+                if (!user.emailVerified) verificationTimer = setInterval(checkStatus, 3000);
             }
         });
 
