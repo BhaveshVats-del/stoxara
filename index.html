@@ -3,97 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoxara | Trusted Market Intelligence</title>
+    <title>Stoxara | AI Financial Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; margin: 0; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; margin: 0; }
         .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%); z-index: -2; }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 32px; transition: 0.4s ease; }
-        .glass-panel:hover { border-color: #60A5FA; background: rgba(255, 255, 255, 0.05); transform: translateY(-8px); }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; transition: 0.3s ease; }
         .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .floating { animation: float 6s ease-in-out infinite; }
+        .legal-box { font-size: 0.75rem; line-height: 1.4; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.05); }
     </style>
 </head>
 <body class="min-h-screen">
 
     <div class="bg-glow"></div>
 
-    <div class="fixed top-20 left-10 opacity-10 floating"><i data-lucide="bitcoin" class="w-32 h-32 text-yellow-500"></i></div>
-    <div class="fixed bottom-20 right-10 opacity-10 floating" style="animation-delay: 2s;"><i data-lucide="ethereum" class="w-40 h-40 text-blue-400"></i></div>
-
-    <nav class="max-w-7xl mx-auto px-10 py-10 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
-                <i data-lucide="shield-check" class="text-white w-7 h-7"></i>
+    <nav class="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="p-2 bg-blue-600 rounded-xl shadow-lg shadow-blue-500/40">
+                <i data-lucide="trending-up" class="text-white w-6 h-6"></i>
             </div>
-            <span class="text-3xl font-black tracking-tighter uppercase italic">STOXARA</span>
+            <span class="text-2xl font-black tracking-tighter uppercase italic">STOXARA</span>
         </div>
-        <div class="bg-blue-500/10 border border-blue-500/20 px-6 py-2 rounded-full">
-            <span class="text-[10px] font-black tracking-[0.3em] text-blue-400 uppercase">Verified Intelligence v2.0</span>
+        <div class="flex gap-4">
+            <span class="bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-[10px] font-bold border border-blue-500/20">BETA ACCESS</span>
         </div>
     </nav>
 
     <main class="max-w-6xl mx-auto px-6 py-10">
         
-        <div class="text-center mb-20">
-            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
-                Reliable <span class="gradient-text">Stock Data</span>
+        <div class="text-center mb-16">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
+                Democratizing <span class="gradient-text">Stock Knowledge</span>
             </h1>
-            <p class="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed">
-                Stoxara isn't just a chatbot—it's a high-fidelity intelligence engine. We prioritize data integrity to give you the most reliable investment analysis in the market.
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                Stoxara aims to make stock market knowledge accessible, simple, and understandable for everyone.
             </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-24">
-            
-            <div class="glass-panel p-8 text-center">
-                <div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="database" class="text-blue-400 w-8 h-8"></i>
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="glass-panel p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="shield-check" class="text-blue-400"></i> Why Trust Stoxara AI?
+                </h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <i data-lucide="bar-chart-3" class="text-slate-500 w-5 h-5 mt-1"></i>
+                        <div><p class="font-bold text-sm">Data-Driven Insights</p><p class="text-xs text-slate-400">Analyzes publicly available market data, trends, and news.</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="brain" class="text-slate-500 w-5 h-5 mt-1"></i>
+                        <div><p class="font-bold text-sm">AI-Powered Explanations</p><p class="text-xs text-slate-400">Complex stock market concepts explained in simple language.</p></div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="graduation-cap" class="text-slate-500 w-5 h-5 mt-1"></i>
+                        <div><p class="font-bold text-sm">Built for Learning</p><p class="text-xs text-slate-400">Designed for beginners — not for direct trading advice.</p></div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-extrabold mb-4">Unmatched Accuracy</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Our AI pulls from premium, institutional-grade data sources. Every trend and every stock profile is cross-verified to ensure 99.9% data reliability.
-                </p>
             </div>
 
-            <div class="glass-panel p-8 text-center">
-                <div class="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="timer" class="text-purple-400 w-8 h-8"></i>
+            <div class="glass-panel p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i data-lucide="settings" class="text-purple-400"></i> How Stoxara Works
+                </h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4 items-center">
+                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">1</span>
+                        <p class="text-sm">Ask about stocks, indicators, or market trends.</p>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">2</span>
+                        <p class="text-sm">Stoxara processes market data and financial context.</p>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">3</span>
+                        <p class="text-sm">Get structured, beginner-friendly insights instantly.</p>
+                    </div>
                 </div>
-                <h3 class="text-xl font-extrabold mb-4">Real-Time Refresh</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Markets move in milliseconds. Stoxara processes live price action and news sentiment instantly, so your "trends" are never out of date.
-                </p>
             </div>
-
-            <div class="glass-panel p-8 text-center">
-                <div class="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="fingerprint" class="text-emerald-400 w-8 h-8"></i>
-                </div>
-                <h3 class="text-xl font-extrabold mb-4">Deep Human Context</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">
-                    Unlike basic algorithms, Stoxara understands the *context* behind the numbers, providing human-like analysis of balance sheets and company news.
-                </p>
-            </div>
-
         </div>
 
-        <div class="text-center bg-white/5 border border-white/10 rounded-[40px] p-12">
-            <h2 class="text-3xl font-black mb-6">The Stoxara Promise</h2>
-            <p class="text-slate-400 italic max-w-2xl mx-auto">
-                "We provide every user with the same tools used by Wall Street analysts. Reliability is our foundation, and accurate wealth creation is our goal."
-            </p>
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div class="glass-panel p-8 border-l-4 border-l-emerald-500">
+                <h2 class="text-xl font-bold mb-4">Early Stage Product</h2>
+                <ul class="space-y-3">
+                    <li class="text-sm flex gap-2"><i data-lucide="rocket" class="w-4 h-4 text-emerald-400"></i> Newly launched AI chatbot</li>
+                    <li class="text-sm flex gap-2"><i data-lucide="test-tube" class="w-4 h-4 text-emerald-400"></i> Currently in early access / beta phase</li>
+                    <li class="text-sm flex gap-2"><i data-lucide="users" class="w-4 h-4 text-emerald-400"></i> Actively improving based on user feedback</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel p-8 border-l-4 border-l-blue-500">
+                <h2 class="text-xl font-bold mb-6">Pricing (Planned)</h2>
+                <div class="flex gap-4">
+                    <div class="flex-1 bg-white/5 p-4 rounded-xl">
+                        <p class="text-[10px] font-bold text-slate-500">FREE</p>
+                        <p class="text-xs text-slate-300 mt-2">Basic stock questions & educational learning.</p>
+                    </div>
+                    <div class="flex-1 bg-blue-600/20 border border-blue-500/30 p-4 rounded-xl">
+                        <p class="text-[10px] font-bold text-blue-400">PREMIUM • ₹500/mo</p>
+                        <p class="text-xs text-slate-300 mt-2">Unlimited queries & advanced sentiment insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel p-1 overflow-hidden relative mb-16">
+            <div class="h-[600px] w-full rounded-[20px] bg-slate-950/50">
+                <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
+            </div>
+        </div>
+
+        <div class="legal-box py-10">
+            <p class="font-bold mb-2 text-slate-300 uppercase tracking-widest text-[10px]">Legal Disclaimer</p>
+            <p class="mb-2">Stoxara is an AI-powered educational and informational chatbot designed to help users understand stock market concepts, trends, and publicly available data. Stoxara does not provide financial, investment, or trading advice. All information generated by the AI is for learning purposes only.</p>
+            <p class="mb-2">Stock market investments are subject to market risks. Users are advised to consult a certified financial advisor before making any investment decisions. Stoxara and its creators are not responsible for any financial losses incurred.</p>
         </div>
 
     </main>
 
-    <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
-
-    <footer class="py-20 text-center opacity-40">
-        <p class="text-[10px] font-black tracking-[0.6em] uppercase">Built for the future of finance &bull; Stoxara Intelligence</p>
+    <footer class="py-10 text-center text-slate-600 text-[10px] font-bold tracking-[0.5em] uppercase">
+        Stoxara AI &copy; 2026
     </footer>
 
     <script>lucide.createIcons();</script>
