@@ -3,130 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoxara | AI Financial Intelligence</title>
+    <title>Stoxara AI | Smart Stock Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #020617; color: #f8fafc; margin: 0; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%); z-index: -2; }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; transition: 0.3s ease; }
-        .gradient-text { background: linear-gradient(135deg, #60A5FA 0%, #C084FC 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .legal-box { font-size: 0.75rem; line-height: 1.4; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.05); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 600px;
+            background: radial-gradient(circle at center, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(124, 58, 237, 0.4);
+        }
+
+        .nav-link:hover { color: #60a5fa; transition: 0.3s; }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-    <div class="bg-glow"></div>
+    <div class="hero-glow"></div>
 
-    <nav class="max-w-7xl mx-auto px-8 py-8 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <div class="p-2 bg-blue-600 rounded-xl shadow-lg shadow-blue-500/40">
-                <i data-lucide="trending-up" class="text-white w-6 h-6"></i>
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass px-8 py-3">
+            <div class="text-2xl font-bold tracking-tighter">
+                STOXARA <span class="text-blue-500">AI</span>
             </div>
-            <span class="text-2xl font-black tracking-tighter uppercase italic">STOXARA</span>
-        </div>
-        <div class="flex gap-4">
-            <span class="bg-blue-500/10 text-blue-400 px-4 py-1.5 rounded-full text-[10px] font-bold border border-blue-500/20">BETA ACCESS</span>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#features" class="nav-link">Why Stoxara</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+            </div>
+            <a href="#pricing" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold">Get Pro</a>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6 py-10">
-        
-        <div class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter">
-                Democratizing <span class="gradient-text">Stock Knowledge</span>
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-block px-4 py-1.5 mb-6 glass rounded-full text-xs font-semibold tracking-widest text-blue-400 uppercase">
+                A Product of ByteBasket Innovations
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Smart Stock Intelligence. <br>
+                <span class="gradient-text">Simple Decisions.</span>
             </h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto">
-                Stoxara aims to make stock market knowledge accessible, simple, and understandable for everyone.
+            <p class="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                Stoxara transforms complex market data into simple, actionable insights. Built for retail investors who value clarity over capital.
             </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-            <div class="glass-panel p-8">
-                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <i data-lucide="shield-check" class="text-blue-400"></i> Why Trust Stoxara AI?
-                </h2>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <i data-lucide="bar-chart-3" class="text-slate-500 w-5 h-5 mt-1"></i>
-                        <div><p class="font-bold text-sm">Data-Driven Insights</p><p class="text-xs text-slate-400">Analyzes publicly available market data, trends, and news.</p></div>
-                    </div>
-                    <div class="flex gap-4">
-                        <i data-lucide="brain" class="text-slate-500 w-5 h-5 mt-1"></i>
-                        <div><p class="font-bold text-sm">AI-Powered Explanations</p><p class="text-xs text-slate-400">Complex stock market concepts explained in simple language.</p></div>
-                    </div>
-                    <div class="flex gap-4">
-                        <i data-lucide="graduation-cap" class="text-slate-500 w-5 h-5 mt-1"></i>
-                        <div><p class="font-bold text-sm">Built for Learning</p><p class="text-xs text-slate-400">Designed for beginners — not for direct trading advice.</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-panel p-8">
-                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <i data-lucide="settings" class="text-purple-400"></i> How Stoxara Works
-                </h2>
-                <div class="space-y-6">
-                    <div class="flex gap-4 items-center">
-                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">1</span>
-                        <p class="text-sm">Ask about stocks, indicators, or market trends.</p>
-                    </div>
-                    <div class="flex gap-4 items-center">
-                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">2</span>
-                        <p class="text-sm">Stoxara processes market data and financial context.</p>
-                    </div>
-                    <div class="flex gap-4 items-center">
-                        <span class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-xs font-bold">3</span>
-                        <p class="text-sm">Get structured, beginner-friendly insights instantly.</p>
-                    </div>
-                </div>
+            <div class="flex flex-col md:flex-row justify-center gap-6 text-sm font-semibold text-gray-300">
+                <span class="flex items-center justify-center gap-2"><i class="fa-solid fa-ban text-red-500"></i> No Tips</span>
+                <span class="flex items-center justify-center gap-2"><i class="fa-solid fa-ban text-red-500"></i> No Trading</span>
+                <span class="flex items-center justify-center gap-2"><i class="fa-solid fa-check text-green-500"></i> Only Pure Intelligence</span>
             </div>
         </div>
+    </section>
 
-        <div class="grid md:grid-cols-2 gap-8 mb-16">
-            <div class="glass-panel p-8 border-l-4 border-l-emerald-500">
-                <h2 class="text-xl font-bold mb-4">Early Stage Product</h2>
-                <ul class="space-y-3">
-                    <li class="text-sm flex gap-2"><i data-lucide="rocket" class="w-4 h-4 text-emerald-400"></i> Newly launched AI chatbot</li>
-                    <li class="text-sm flex gap-2"><i data-lucide="test-tube" class="w-4 h-4 text-emerald-400"></i> Currently in early access / beta phase</li>
-                    <li class="text-sm flex gap-2"><i data-lucide="users" class="w-4 h-4 text-emerald-400"></i> Actively improving based on user feedback</li>
+    <section id="features" class="py-20 px-6 bg-[#050a18]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="glass p-10 border-red-900/20" data-aos="fade-right">
+                <h3 class="text-red-400 font-bold text-xl mb-6">The Problem</h3>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <div class="text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <p class="text-gray-300"><span class="text-white font-medium">Noisy News:</span> Biased and misleading information makes decisions harder.</p>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <p class="text-gray-300"><span class="text-white font-medium">Scattered Data:</span> Retail investors lose money because data is confusing.</p>
+                    </li>
                 </ul>
             </div>
+            <div class="glass p-10 border-green-900/20" data-aos="fade-left">
+                <h3 class="text-green-400 font-bold text-xl mb-6">Our Solution</h3>
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <div class="text-green-500 mt-1"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <p class="text-gray-300"><span class="text-white font-medium">AI Analysis:</span> We simplify market trends into plain, human language.</p>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="text-green-500 mt-1"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <p class="text-gray-300"><span class="text-white font-medium">Clarity First:</span> Reducing emotional decisions by explaining the "Why".</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-            <div class="glass-panel p-8 border-l-4 border-l-blue-500">
-                <h2 class="text-xl font-bold mb-6">Pricing (Planned)</h2>
-                <div class="flex gap-4">
-                    <div class="flex-1 bg-white/5 p-4 rounded-xl">
-                        <p class="text-[10px] font-bold text-slate-500">FREE</p>
-                        <p class="text-xs text-slate-300 mt-2">Basic stock questions & educational learning.</p>
-                    </div>
-                    <div class="flex-1 bg-blue-600/20 border border-blue-500/30 p-4 rounded-xl">
-                        <p class="text-[10px] font-bold text-blue-400">PREMIUM • ₹500/mo</p>
-                        <p class="text-xs text-slate-300 mt-2">Unlimited queries & advanced sentiment insights.</p>
-                    </div>
+    <section id="how-it-works" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-4xl font-bold mb-16" data-aos="fade-up">How Stoxara AI Works</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400 text-2xl">1</div>
+                    <h4 class="font-bold mb-2">Ask</h4>
+                    <p class="text-sm text-gray-400">Ask any stock question via our AI chatbot below.</p>
+                </div>
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400 text-2xl">2</div>
+                    <h4 class="font-bold mb-2">Process</h4>
+                    <p class="text-sm text-gray-400">AI scans live data, trends, and financial signals.</p>
+                </div>
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400 text-2xl">3</div>
+                    <h4 class="font-bold mb-2">Explain</h4>
+                    <p class="text-sm text-gray-400">Complex moves are explained in simple language.</p>
+                </div>
+                <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400 text-2xl">4</div>
+                    <h4 class="font-bold mb-2">Decide</h4>
+                    <p class="text-sm text-gray-400">Empowered to make your own informed decisions.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="glass-panel p-1 overflow-hidden relative mb-16">
-            <div class="h-[600px] w-full rounded-[20px] bg-slate-950/50">
-                <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
+    <section id="pricing" class="py-24 px-6 bg-[#050a18]">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Pricing Plans</h2>
+                <p class="text-gray-400">Clarity shouldn't be expensive.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-8" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-2">Free</h3>
+                    <div class="text-4xl font-bold mb-6">₹0 <span class="text-sm text-gray-500">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-300">
+                        <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Basic AI insights</li>
+                        <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Simple explanations</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl border border-gray-700 hover:bg-white/5 transition font-semibold">Current Plan</button>
+                </div>
+                <div class="glass p-8 border-blue-500/30 relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute -top-4 right-8 bg-blue-600 text-xs px-3 py-1 rounded-full uppercase font-bold">Pro Access</div>
+                    <h3 class="text-xl font-bold mb-2">Pro</h3>
+                    <div class="text-4xl font-bold mb-6">₹499 <span class="text-sm text-gray-500">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-300">
+                        <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Advanced analysis</li>
+                        <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Trend summaries</li>
+                        <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Priority responses</li>
+                    </ul>
+                    <button class="w-full btn-primary py-3 rounded-xl font-semibold">Upgrade to Pro</button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="legal-box py-10">
-            <p class="font-bold mb-2 text-slate-300 uppercase tracking-widest text-[10px]">Legal Disclaimer</p>
-            <p class="mb-2">Stoxara is an AI-powered educational and informational chatbot designed to help users understand stock market concepts, trends, and publicly available data. Stoxara does not provide financial, investment, or trading advice. All information generated by the AI is for learning purposes only.</p>
-            <p class="mb-2">Stock market investments are subject to market risks. Users are advised to consult a certified financial advisor before making any investment decisions. Stoxara and its creators are not responsible for any financial losses incurred.</p>
+    <footer class="py-12 px-6 border-t border-white/5 text-center">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-xl font-bold mb-4">STOXARA AI</div>
+            <p class="text-xs text-gray-500 mb-6">
+                ⚠️ DISCLAIMER: Stoxara AI is not a SEBI-registered advisor. All content is for educational purposes only. 
+                ByteBasket Innovations is focused on simplifying complex decision-making through AI.
+            </p>
+            <p class="text-sm text-gray-400">© 2024 ByteBasket Innovations.</p>
         </div>
-
-    </main>
-
-    <footer class="py-10 text-center text-slate-600 text-[10px] font-bold tracking-[0.5em] uppercase">
-        Stoxara AI &copy; 2026
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
+
 </body>
 </html>
