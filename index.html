@@ -3,172 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoxara AI | ByteBasket Innovations</title>
+    <title>Stoxara AI | Smart Stock Intelligence by ByteBasket</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #030712; color: #f3f4f6; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; }
-        .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-glow { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 800px; background: radial-gradient(circle at center, rgba(96, 165, 250, 0.1) 0%, transparent 70%); z-index: -1; }
-        .btn-primary { background: linear-gradient(90deg, #2563eb, #7c3aed); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(124, 58, 237, 0.4); }
-        .pitch-card { transition: all 0.3s ease; height: 100%; }
-        .pitch-card:hover { border-color: #60a5fa; background: rgba(255,255,255,0.05); }
-        .slide-num { font-size: 0.7rem; font-weight: 800; color: #4b5563; text-transform: uppercase; letter-spacing: 0.1em; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --bg-dark: #030712;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a855f7;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f3f4f6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 800px;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 24px -8px rgba(124, 58, 237, 0.5);
+        }
+
+        .pitch-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .pitch-card:hover {
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .slide-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: #4b5563;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
     <div class="hero-glow"></div>
 
-    <nav class="fixed w-full z-50 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass px-8 py-3">
-            <div class="text-xl font-bold tracking-tighter uppercase">STOXARA <span class="text-blue-500">AI</span></div>
-            <div class="hidden md:flex space-x-6 text-xs font-semibold uppercase tracking-widest text-gray-400">
-                <a href="#pitch" class="hover:text-blue-400">Pitch Deck</a>
-                <a href="#founder" class="hover:text-blue-400">Founder</a>
-                <a href="#pricing" class="hover:text-blue-400">Freemium</a>
+    <nav class="fixed w-full z-50 px-4 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center glass px-6 py-3 border-white/10">
+            <div class="text-xl font-extrabold tracking-tighter uppercase">
+                STOXARA <span class="text-blue-500">AI</span>
             </div>
-            <a href="#pricing" class="btn-primary px-5 py-2 rounded-full text-xs font-bold uppercase">Get Pro</a>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#problem" class="hover:text-white transition">The Problem</a>
+                <a href="#pitch" class="hover:text-white transition">Pitch Deck</a>
+                <a href="#founder" class="hover:text-white transition">Founder</a>
+                <a href="#pricing" class="hover:text-white transition">Pricing</a>
+            </div>
+            <a href="#pricing" class="btn-primary px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-tight">Access Pro</a>
         </div>
     </nav>
 
     <section class="pt-40 pb-20 px-6">
-        <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Smart Intelligence.<br><span class="gradient-text">Simple Decisions.</span></h1>
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-                Stoxara AI is an AI-powered stock intelligence platform built under <strong>ByteBasket Innovations</strong> to help retail investors understand the market with clarity.
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <div class="inline-block px-4 py-1.5 mb-6 glass rounded-full text-[10px] font-bold tracking-widest text-blue-400 uppercase border-blue-500/20">
+                Smart Stock Intelligence. Simple Decisions.
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-tight">
+                Decode the Market with <br><span class="gradient-text">Ethical AI.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Built under <b>ByteBasket Innovations</b>, Stoxara transforms complex market data into simple, actionable insights. Clarity before capital.
             </p>
-            <div class="flex justify-center gap-4 text-sm font-bold text-blue-400 italic">
-                <span>👉 Not trading.</span><span>Not tips.</span><span>Only intelligence.</span>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-xs font-bold text-gray-400">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-circle-notch text-blue-500 animate-spin"></i> NOT TRADING</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-ban text-red-500"></i> NO TIPS</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-brain text-purple-500"></i> ONLY INTELLIGENCE</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <div class="glass p-10 border-red-500/10" data-aos="fade-right">
+                <h3 class="text-red-400 font-bold mb-4">The Problem</h3>
+                <p class="text-sm text-gray-500 mb-8 font-medium italic">Retail investors lose money because:</p>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation text-red-500"></i> Stock data is scattered and confusing</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation text-red-500"></i> News is biased, noisy, or misleading</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-triangle-exclamation text-red-500"></i> Tools are complex and built for pros</li>
+                </ul>
+            </div>
+            <div class="glass p-10 border-green-500/10" data-aos="fade-left">
+                <h3 class="text-green-400 font-bold mb-4">Our Solution</h3>
+                <p class="text-sm text-gray-500 mb-8 font-medium italic">Stoxara AI solves this by:</p>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-green-500"></i> Analyzing data into plain language</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-green-500"></i> Explaining why a stock moves</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-wand-magic-sparkles text-green-500"></i> Reducing emotional, impulsive decisions</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section id="pitch" class="py-24 px-6 bg-[#050a18]/40">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center underline decoration-blue-600 underline-offset-8">1-Page Pitch Deck</h2>
-            
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold tracking-tighter">The Pitch Deck</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 1</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Vision</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">To make stock market intelligence simple, accessible, and responsible for every retail investor.</p>
+                    <div class="slide-label mb-4">Slide 1 – Vision</div>
+                    <h4 class="font-bold text-lg mb-2">The North Star</h4>
+                    <p class="text-xs text-gray-400">To make stock market intelligence simple, accessible, and responsible for every retail investor.</p>
                 </div>
-
-                <div class="glass p-8 pitch-card border-red-900/20" data-aos="fade-up">
-                    <span class="slide-num">Slide 2</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-red-400">Problem</h3>
-                    <ul class="text-sm text-gray-400 space-y-2">
-                        <li>• Scattered & confusing data</li>
-                        <li>• Biased or noisy news</li>
-                        <li>• Complex professional tools</li>
-                    </ul>
+                <div class="glass p-8 pitch-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="slide-label mb-4">Slide 2 – Problem</div>
+                    <h4 class="font-bold text-lg mb-2">The Void</h4>
+                    <p class="text-xs text-gray-400">Retail investors lack clear information, trustworthy analysis, and beginner-friendly tools.</p>
                 </div>
-
-                <div class="glass p-8 pitch-card border-green-900/20" data-aos="fade-up">
-                    <span class="slide-num">Slide 3</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-green-400">Solution</h3>
-                    <p class="text-sm text-gray-400">Stoxara AI: AI-based stock intelligence, simple explanations, and zero trading pressure.</p>
+                <div class="glass p-8 pitch-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="slide-label mb-4">Slide 3 – Solution</div>
+                    <h4 class="font-bold text-lg mb-2">Stoxara AI</h4>
+                    <p class="text-xs text-gray-400">AI-based stock intelligence providing simple explanations without trading pressure.</p>
                 </div>
-
                 <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 4</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Market</h3>
-                    <p class="text-sm text-gray-400 leading-relaxed">100M+ retail investors in India. Rapid rise of AI adoption in personal finance.</p>
+                    <div class="slide-label mb-4">Slide 4 – Market</div>
+                    <h4 class="font-bold text-lg mb-2">Market Cap</h4>
+                    <p class="text-xs text-gray-400">100M+ retail investors in India alone. Rapid Rise in AI adoption for finance.</p>
                 </div>
-
+                <div class="glass p-8 pitch-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="slide-label mb-4">Slide 5 – Product</div>
+                    <h4 class="font-bold text-lg mb-2">The Ecosystem</h4>
+                    <p class="text-xs text-gray-400">AI chatbot for stock insights + Educational explanations + Scalable SaaS architecture.</p>
+                </div>
+                <div class="glass p-8 pitch-card border-blue-500/30 shadow-lg shadow-blue-500/5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="slide-label mb-4">Slide 6 – Business Model</div>
+                    <h4 class="font-bold text-lg mb-2 text-blue-400">Freemium</h4>
+                    <p class="text-xs text-gray-400">Free basic insights. Pro subscription at <b>₹499/month</b>. Future B2B & API licensing.</p>
+                </div>
                 <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 5</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Product</h3>
-                    <p class="text-sm text-gray-400">AI chatbot for stock insights, educational explanations, and a scalable SaaS platform.</p>
+                    <div class="slide-label mb-4">Slide 7 – Traction</div>
+                    <h4 class="font-bold text-lg mb-2">Progress</h4>
+                    <p class="text-xs text-gray-400">MVP launched. Continuous improvement. Early user feedback phase. Preparing for Beta.</p>
                 </div>
-
-                <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 6</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Business Model</h3>
-                    <p class="text-sm text-gray-400">Freemium: ₹0 basic access / ₹499 monthly Pro subscription. Future B2B API licensing.</p>
+                <div class="glass p-8 pitch-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="slide-label mb-4">Slide 8 – Competition</div>
+                    <h4 class="font-bold text-lg mb-2">The Edge</h4>
+                    <p class="text-xs text-gray-400">Unlike complex trading platforms or risky "tip" apps, we focus on clarity and ethics.</p>
                 </div>
-
-                <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 7</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Traction</h3>
-                    <p class="text-sm text-gray-400">MVP Launched. Continuous product refinement based on early user feedback phase.</p>
+                <div class="glass p-8 pitch-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="slide-label mb-4">Slide 9 – Roadmap</div>
+                    <h4 class="font-bold text-lg mb-2">The Future</h4>
+                    <p class="text-xs text-gray-400">User growth → AI accuracy gains → Mobile app launch → Education ecosystem.</p>
                 </div>
-
-                <div class="glass p-8 pitch-card" data-aos="fade-up">
-                    <span class="slide-num">Slide 8</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Competition</h3>
-                    <p class="text-sm text-gray-400">Stoxara AI focuses on clarity, unlike complex platforms or high-risk tip providers.</p>
-                </div>
-
-                <div class="glass p-8 pitch-card bg-blue-900/10 border-blue-500/30" data-aos="fade-up">
-                    <span class="slide-num">Slide 9</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-blue-400">Roadmap</h3>
-                    <p class="text-xs text-gray-400">User growth → AI accuracy improvement → Mobile app → Education ecosystem.</p>
-                </div>
-
-                <div class="md:col-span-3 lg:col-span-1 glass p-8 pitch-card border-purple-500/40" data-aos="fade-up">
-                    <span class="slide-num">Slide 10</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4 text-purple-400">The Ask</h3>
-                    <p class="text-sm text-gray-400">Seeking angel investment to scale AI models, build trust & expand user base.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="founder" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="glass p-10 md:p-16 relative overflow-hidden" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row gap-12 items-center">
-                    <div class="w-40 h-40 md:w-56 md:h-56 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center text-4xl font-bold flex-shrink-0">BV</div>
-                    <div>
-                        <h2 class="text-4xl font-bold mb-2">Bhavesh Vats</h2>
-                        <p class="text-blue-400 font-semibold mb-6">14-Year-Old Founder & Visionary</p>
-                        <p class="text-gray-300 leading-relaxed italic mb-6">
-                            "I believe there should be a tool that educates before influencing. Stoxara AI was built to help beginners understand the market, not just follow tips. We prioritize responsibility over revenue."
-                        </p>
-                        <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">ByteBasket Innovations</div>
+                <div class="md:col-span-2 lg:col-span-3 glass p-10 bg-gradient-to-br from-blue-900/10 to-purple-900/10 border-blue-500/40" data-aos="zoom-in">
+                    <div class="slide-label mb-4">Slide 10 – The Ask</div>
+                    <h4 class="font-bold text-2xl mb-4 text-white">Scaling the Vision</h4>
+                    <p class="text-sm text-gray-300 mb-6">Seeking pre-seed / angel investment to improve AI models, build trust/compliance, and scale user base.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-1 glass text-[10px] font-bold text-blue-400">TECH EXPANSION</span>
+                        <span class="px-4 py-1 glass text-[10px] font-bold text-purple-400">COMPLIANCE</span>
+                        <span class="px-4 py-1 glass text-[10px] font-bold text-green-400">MARKET REACH</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            <div class="glass p-10 text-center" data-aos="fade-right">
-                <h4 class="text-lg font-bold mb-4">Free Plan</h4>
-                <div class="text-4xl font-bold mb-6">₹0 <span class="text-sm font-normal text-gray-500">/mo</span></div>
-                <p class="text-sm text-gray-400 mb-8">Basic AI insights and stock explanations for beginners.</p>
-                <button class="w-full py-3 rounded-full border border-gray-700 hover:bg-white/5 font-bold">Current Plan</button>
+    <section id="founder" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass p-8 md:p-16 relative z-10" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-48 h-48 rounded-3xl bg-gradient-to-tr from-blue-600 to-purple-700 flex items-center justify-center text-6xl font-black shadow-2xl relative">
+                        BV
+                        <div class="absolute -bottom-2 -right-2 bg-blue-500 text-[10px] px-3 py-1 rounded-full text-white font-bold uppercase tracking-tighter">Founder</div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-extrabold mb-2">Bhavesh Vats</h2>
+                        <p class="text-blue-400 font-bold mb-6 text-sm uppercase tracking-widest">14-Year-Old Visionary & Tech Architect</p>
+                        <p class="text-gray-300 italic leading-relaxed mb-6 font-light">
+                            "I started <b>ByteBasket Innovations</b> after noticing how confusing the stock market feels for beginners. Most platforms hide risks or overwhelm users. I believed there should be a tool that <strong>educates before influencing</strong>. Stoxara AI is built for responsibility first, revenue second."
+                        </p>
+                        <div class="flex gap-4">
+                            <span class="text-xs font-bold text-gray-500"><i class="fa-solid fa-code mr-1"></i> Ethical AI</span>
+                            <span class="text-xs font-bold text-gray-500"><i class="fa-solid fa-hand-holding-heart mr-1"></i> Simplicity</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="glass p-10 text-center border-blue-500/50 relative overflow-hidden" data-aos="fade-left">
-                <div class="bg-blue-600 text-[10px] font-black absolute top-0 right-0 px-4 py-1 uppercase tracking-tighter">Recommended</div>
-                <h4 class="text-lg font-bold mb-4">Pro Plan</h4>
-                <div class="text-4xl font-bold mb-6">₹499 <span class="text-sm font-normal text-gray-500">/mo</span></div>
-                <ul class="text-left text-xs text-gray-400 space-y-3 mb-8">
-                    <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Advanced AI analysis</li>
-                    <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Market trend summaries</li>
-                    <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Priority AI responses</li>
-                </ul>
-                <button class="w-full btn-primary py-3 rounded-full font-bold">Upgrade to Pro</button>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.02] -z-0 pointer-events-none">
+                VISION
             </div>
         </div>
     </section>
 
-    <footer class="py-12 px-6 border-t border-white/5 text-center">
-        <p class="text-[10px] text-gray-600 uppercase tracking-widest mb-4">
-            Stoxara AI is not a SEBI-registered advisor. Educational purposes only.
-        </p>
-        <p class="text-xs text-gray-400">&copy; 2024 ByteBasket Innovations. All rights reserved.</p>
+    <section id="pricing" class="py-24 px-6 bg-[#050a18]/40">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4 tracking-tighter">Choose Your Plan</h2>
+            <p class="text-gray-500">Premium intelligence for every retail investor.</p>
+        </div>
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+            <div class="glass p-10" data-aos="fade-up">
+                <h4 class="font-bold text-xl mb-2">Free</h4>
+                <div class="text-4xl font-black mb-8">₹0 <span class="text-sm font-normal text-gray-500">/mo</span></div>
+                <ul class="text-left space-y-4 text-xs text-gray-400 mb-10">
+                    <li><i class="fa-solid fa-check text-blue-500 mr-3"></i> Basic AI insights & explanations</li>
+                    <li><i class="fa-solid fa-check text-blue-500 mr-3"></i> Early user dashboard</li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border border-white/10 hover:bg-white/5 font-bold text-xs uppercase tracking-widest">Current Plan</button>
+            </div>
+            <div class="glass p-10 border-blue-500/40 shadow-xl shadow-blue-500/5 relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute top-0 right-0 bg-blue-600 text-[9px] font-black uppercase px-4 py-1 rounded-tr-2xl rounded-bl-xl tracking-tighter text-white">Investor Choice</div>
+                <h4 class="font-bold text-xl mb-2">Pro Plan</h4>
+                <div class="text-4xl font-black mb-8">₹499 <span class="text-sm font-normal text-gray-500">/mo</span></div>
+                <ul class="text-left space-y-4 text-xs text-gray-300 mb-10">
+                    <li><i class="fa-solid fa-star text-blue-400 mr-3"></i> Advanced Market Analysis</li>
+                    <li><i class="fa-solid fa-star text-blue-400 mr-3"></i> Trend Summaries & Signals</li>
+                    <li><i class="fa-solid fa-star text-blue-400 mr-3"></i> Priority AI Data Processing</li>
+                </ul>
+                <button class="w-full btn-primary py-3 rounded-xl font-bold text-xs uppercase tracking-widest text-white">Go Pro</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 text-center border-t border-white/5">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-sm font-black text-gray-500 uppercase tracking-[0.4em] mb-6">Company Portfolio</h2>
+            <h3 class="text-3xl font-bold mb-6">ByteBasket Innovations</h3>
+            <p class="text-gray-400 leading-relaxed font-light">
+                An emerging technology startup focused on building AI-driven digital products that simplify complex decision-making through simplicity and intelligence.
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 bg-black border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 text-center md:text-left">
+            <div class="max-w-xs">
+                <div class="text-xl font-black tracking-tighter mb-4 uppercase">STOXARA <span class="text-blue-500">AI</span></div>
+                <p class="text-[10px] text-gray-600 font-bold uppercase tracking-widest leading-loose">
+                    Stoxara AI is not a SEBI-registered advisor. All content is for educational purposes only.
+                </p>
+            </div>
+            <div class="text-sm text-gray-500">
+                © 2024 ByteBasket Innovations. Built for India's Future.
+            </div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 1000, once: true });</script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
 
     <script src='https://www.noupe.com/embed/019b8a2a637c706ea2ffaf911981d4912d73.js'></script>
 </body>
